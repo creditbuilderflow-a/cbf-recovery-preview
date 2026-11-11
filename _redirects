@@ -1,0 +1,14 @@
+# Netlify Redirects & Clean URLs
+/dealerships/revenue                             /dealerships/revenue/index.html                           200
+/dealerships/revenue/                            /dealerships/revenue/index.html                           200
+/dealerships/thabile                             /dealerships/thabile/index.html                           200
+/dealerships/thabile/                            /dealerships/thabile/index.html                           200
+/dealerships/case-study                          /dealerships/case-study/index.html                        200
+/dealerships/case-study/                         /dealerships/case-study/index.html                        200
+/dealerships/case-study.html                     /dealerships/case-study/index.html                        200
+/dealerships/case-study-khumbuzile-madondo.html  /dealerships/case-study/case-study-khumbuzile-madondo.html 200
+/dealerships/case-study-vusumzi-buzo.html        /dealerships/case-study/case-study-vusumzi-buzo.html       200
+/dealerships/case-study-lawrence-valoyi.html     /dealerships/case-study/case-study-lawrence-valoyi.html     200
+/revenue                                         /revenue.html                                             200
+/thabile                                         /thabile.html                                             200
+/case-study                                      /case-study.html                                          200

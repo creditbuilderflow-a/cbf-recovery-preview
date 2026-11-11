@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revenue Salvage Audit | Credit Builder Flow</title>
+    <meta name="description" content="Turn bank-declined car buyers into delivered vehicle sales. Recover lost Second Gross, protect APU, and salvage turned-down deals with zero dealer paperwork.">
+    
+    <!-- Favicon: Official Credit Builder Flow Logo in Browser Tab -->
+    <link rel="icon" type="image/jpeg" href="https://files.catbox.moe/446hgy.jpg">
+    <link rel="shortcut icon" href="https://files.catbox.moe/446hgy.jpg">
+    <link rel="apple-touch-icon" href="https://files.catbox.moe/446hgy.jpg">
+    
+    <!-- Static Compiled Tailwind CSS + Tailwind CDN for dynamic utility support -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                            950: '#0f172a',
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 25px rgba(59, 130, 246, 0.35)',
+                        'glow-emerald': '0 0 25px rgba(16, 185, 129, 0.35)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Calendly Widget CSS & JS -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+    <style>
+        body { 
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+
+        /* Subtle Pulse for Primary CTA */
+        @keyframes pulseBtn {
+            0%, 100% {
+                transform: translateY(0);
+                box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.35);
+            }
+            50% {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px 0 rgba(37, 99, 235, 0.65), 0 0 0 4px rgba(59, 130, 246, 0.2);
+            }
+        }
+        .btn-animate-pulse {
+            animation: pulseBtn 2.2s ease-in-out infinite;
+        }
+        .btn-animate-pulse:hover {
+            animation: none;
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        /* Infinite Logo Slider */
+        .slider-track {
+            display: flex;
+            animation: scroll 35s linear infinite;
+            width: max-content;
+            padding: 1rem 0;
+        }
+        .slider-track > div {
+            padding-right: 3rem;
+        }
+        .slider-track:hover {
+            animation-play-state: paused;
+        }
+        @keyframes scroll { 
+            0% { transform: translateX(0); } 
+            100% { transform: translateX(-50%); } 
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 overflow-x-hidden font-sans selection:bg-brand-500 selection:text-white">
+
+    <!-- Navigation Bar: Clean & Minimalist -->
+    <nav class="bg-slate-900/95 backdrop-blur border-b border-slate-800 py-3.5 px-4 sm:px-6 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto flex items-center">
+            <!-- CBF Logo Only -->
+            <a href="/" class="flex items-center group">
+                <img src="https://files.catbox.moe/446hgy.jpg" alt="Credit Builder Flow Logo" class="h-10 w-10 sm:h-11 sm:w-11 rounded-full object-cover bg-white shadow-md border-2 border-brand-500/40 group-hover:scale-105 transition-transform duration-200">
+                <span class="ml-3 font-heading font-black text-white text-base sm:text-lg tracking-tight">Credit Builder Flow</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ============================================================ -->
+    <!-- 01 — HERO (Relevance Hook, Badges, and Clean Layout)        -->
+    <!-- ============================================================ -->
+    <header class="bg-slate-900 relative pt-16 pb-20 px-4 sm:px-6 overflow-hidden border-b border-slate-800">
+        <div class="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/80 to-slate-900 pointer-events-none"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-brand-600 rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto relative z-10 text-center reveal active">
+            
+            <!-- Primary Headline -->
+            <h1 class="font-heading text-4xl sm:text-6xl md:text-7xl font-extrabold text-white mb-6 tracking-tight leading-[1.15]">
+                Turn Bank Declines Into <br class="hidden md:block" />
+                <span class="text-brand-400">Saved Deals.</span>
+            </h1>
+            
+            <!-- Subheading -->
+            <p class="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal mb-10">
+                Credit Builder Flow rehabilitates turned-down buyers off-site and returns them approved to take delivery on your floor. Zero paperwork for your F&amp;I.
+            </p>
+
+            <!-- The 4 Micro-Trust Badges -->
+            <div class="pt-2 px-2 max-w-3xl mx-auto">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 text-left">
+                    <div class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/60 flex items-center gap-2.5">
+                        <i class="fa-solid fa-shield-check text-emerald-400 text-base shrink-0"></i>
+                        <div class="text-[11px] leading-tight">
+                            <strong class="text-white block font-bold">POPIA-Aligned</strong>
+                            <span class="text-slate-400">Direct client opt-in</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/60 flex items-center gap-2.5">
+                        <i class="fa-solid fa-scale-balanced text-brand-400 text-base shrink-0"></i>
+                        <div class="text-[11px] leading-tight">
+                            <strong class="text-white block font-bold">NCA-Focused</strong>
+                            <span class="text-slate-400">Legitimate rehab</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/60 flex items-center gap-2.5">
+                        <i class="fa-solid fa-handshake text-emerald-400 text-base shrink-0"></i>
+                        <div class="text-[11px] leading-tight">
+                            <strong class="text-white block font-bold">R0 Setup Fee</strong>
+                            <span class="text-slate-400">Zero dealer risk</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/60 flex items-center gap-2.5">
+                        <i class="fa-solid fa-bolt text-amber-400 text-base shrink-0"></i>
+                        <div class="text-[11px] leading-tight">
+                            <strong class="text-white block font-bold">10-Sec Referral</strong>
+                            <span class="text-slate-400">Zero F&amp;I paperwork</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- 02 — THE PROBLEM (Default Exit vs. With CBF Protocol)       -->
+    <!-- ============================================================ -->
+    <section id="the-problem" class="py-16 sm:py-20 px-4 sm:px-6 max-w-6xl mx-auto reveal">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-xs font-bold uppercase tracking-widest text-brand-600 block mb-2">Showroom Floor Reality</span>
+            <h2 class="font-heading text-2xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
+                The Deal Didn't Always Die When the Bank Said No.
+            </h2>
+            <p class="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed">
+                A bank decline does not automatically mean the buyer can never qualify. In many cases, it is a temporary scorecard obstacle that can be resolved. 
+                <span class="block mt-1 font-medium text-slate-700">The difference is what happens to that customer the moment they leave your showroom.</span>
+            </p>
+        </div>
+
+        <!-- Side-by-Side Split Card -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            
+            <!-- Left: The Default Exit -->
+            <div class="bg-white border border-rose-200/80 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="inline-flex items-center gap-2 bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold px-3 py-1 rounded-full mb-5">
+                        <i class="fa-solid fa-xmark text-rose-500"></i> The Default Exit
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-slate-900 mb-4">When a Turn-Down Is Left Unmanaged</h3>
+                    <ul class="space-y-4 text-sm text-slate-600">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-xmark text-rose-500 mt-1 shrink-0"></i>
+                            <span>Low credit or ICT.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-xmark text-rose-500 mt-1 shrink-0"></i>
+                            <span>Customer exits showroom; file is closed as an unrecoverable dead lead.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-xmark text-rose-500 mt-1 shrink-0"></i>
+                            <span>Customer acquisition cost and sales floor effort are written off to zero.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-xmark text-rose-500 mt-1 shrink-0"></i>
+                            <span><strong>Customer eventually buys elsewhere</strong> once they find help fixing their credit profile.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                    <span>Showroom Outcome:</span>
+                    <strong class="text-rose-600 font-bold text-sm">R0 Gross Profit Recovered</strong>
+                </div>
+            </div>
+
+            <!-- Right: With CBF Protocol -->
+            <div class="bg-white border-2 border-emerald-500/40 rounded-3xl p-6 sm:p-8 shadow-md flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-28 h-28 bg-emerald-50 rounded-bl-full -z-10"></div>
+                <div>
+                    <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full mb-5">
+                        <i class="fa-solid fa-check text-emerald-600"></i> With the CBF Protocol
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-slate-900 mb-4">Your Dealership Becomes That Help</h3>
+                    <ul class="space-y-4 text-sm text-slate-700">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-emerald-600 mt-1 shrink-0"></i>
+                            <span>F&amp;I hands customer your dealership's branded referral link (under 10 seconds).</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-emerald-600 mt-1 shrink-0"></i>
+                            <span><strong>CBF allows your dealership to become that help</strong>—keeping customer loyalty anchored to your showroom.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-emerald-600 mt-1 shrink-0"></i>
+                            <span>CBF handles 100% of bureau rehabilitation off-site with zero dealer paperwork.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-emerald-600 mt-1 shrink-0"></i>
+                            <span>Customer returns approved to sign the deal and take delivery on your floor.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                    <span>Showroom Outcome:</span>
+                    <strong class="text-emerald-600 font-bold text-sm">Delivered Unit &amp; Full Gross Retained</strong>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 03 — HOW IT ACTUALLY WORKS ON YOUR FLOOR (4-Step UI Walkthrough) -->
+    <!-- Direct code & components extracted from FV1-MAIN:            -->
+    <!-- Step 1: DealerPortal.tsx (Share menu, direct buyer WhatsApp, -->
+    <!--         referral slug generator, counter standee)            -->
+    <!-- Step 2: Real WhatsApp Business screenshot + real             -->
+    <!--         EligibilityIntakeForm.tsx co-branded intake layout   -->
+    <!-- Step 3: functions/index.js automated F&I opt-in email        -->
+    <!-- Step 4: DealerPortal.tsx exact 4-column CRM pipeline table   -->
+    <!-- ============================================================ -->
+    <section id="how-to-refer" class="py-16 sm:py-20 px-4 sm:px-6 max-w-6xl mx-auto reveal">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+            <span class="text-xs font-bold uppercase tracking-widest text-brand-600 block mb-2">How to Refer a Lead</span>
+            <h2 class="font-heading text-2xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
+                How It Actually Works on Your Floor.
+            </h2>
+            <p class="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed">
+                Four steps. Your F&amp;I touches exactly one of them. Here is the real system your desk will use.
+            </p>
+        </div>
+
+        <div class="space-y-16 sm:space-y-24">
+
+            <!-- STEP 01: Partner Dashboard & Link Generation -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <div class="lg:col-span-5 space-y-4">
+                    <span class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-brand-700 bg-brand-50 border border-brand-200 px-3 py-1 rounded-full">Onboarding &bull; Step 01</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">Your Dealership Registers &amp; Gets a Custom Referral Link.</h3>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">Each F&amp;I desk receives its own permanent link inside the CBF Partner Dashboard. Every buyer who taps it is attributed to your store and your F&amp;I manager automatically.</p>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span>Locked to your store ID and F&amp;I desk</span></li>
+                        <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span>Zero DMS or IT integration required</span></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-7">
+                    <div class="bg-white rounded-3xl border border-slate-200 shadow-2xl shadow-slate-900/10 overflow-hidden font-sans">
+                        <!-- Portal Top Bar (from DealerPortal.tsx) -->
+                        <div class="flex items-center justify-between px-5 py-3.5 bg-slate-900 text-white border-b border-slate-800 flex-wrap gap-2">
+                            <div class="flex items-center gap-3">
+                                <img src="https://files.catbox.moe/446hgy.jpg" alt="CBF" class="h-8 w-8 rounded-full object-cover border border-white/20">
+                                <div>
+                                    <p class="text-xs font-black uppercase tracking-wider text-white">VW Hatfield &bull; Partner Portal</p>
+                                    <p class="text-[11px] text-slate-400">Assigned F&amp;I: <strong class="text-slate-200">Johan Botha</strong></p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="p-2 bg-slate-800 text-blue-400 rounded-xl border border-slate-700 text-xs" title="Counter QR Code Standee"><i class="fa-solid fa-qrcode"></i></span>
+                                <span class="px-3 py-1.5 bg-blue-600 text-white text-[10px] font-black uppercase tracking-wider rounded-xl inline-flex items-center gap-1.5 shadow-sm"><i class="fa-solid fa-share-nodes"></i> Share Link</span>
+                            </div>
+                        </div>
+                        <div class="p-5 sm:p-6 space-y-4">
+                            <!-- Direct WhatsApp to Unsaved Buyer Number (from DealerPortal.tsx lines 1262-1293) -->
+                            <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200/80 space-y-2.5 text-left">
+                                <p class="text-[10px] font-black uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-paper-plane text-emerald-600"></i>
+                                    <span>WhatsApp Link Direct to Buyer (No Contact Saving Needed)</span>
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                                    <div class="sm:col-span-5 px-3 py-2 rounded-xl bg-white border border-emerald-200 text-xs font-semibold text-slate-800 flex items-center justify-between">
+                                        <span>Thabile M.</span>
+                                        <span class="text-[9px] uppercase font-mono text-slate-400">Buyer</span>
+                                    </div>
+                                    <div class="sm:col-span-5 px-3 py-2 rounded-xl bg-white border border-emerald-200 text-xs font-mono font-semibold text-slate-800 flex items-center justify-between">
+                                        <span>+27 82 456 7890</span>
+                                        <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i>
+                                    </div>
+                                    <span class="sm:col-span-2 px-3 py-2 rounded-xl bg-emerald-600 text-white text-[10px] font-black uppercase tracking-wider text-center flex items-center justify-center cursor-default">Send</span>
+                                </div>
+                            </div>
+
+                            <!-- Client Referral Link (from DealerPortal.tsx lines 1579-1595) -->
+                            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                                <p class="text-[10px] font-black uppercase tracking-wider text-slate-400">Client Referral Link</p>
+                                <div class="flex items-center gap-2">
+                                    <code class="flex-1 min-w-0 truncate px-3 py-2 rounded-xl bg-white border border-slate-200 text-[11px] sm:text-xs font-mono text-blue-600 font-semibold">creditbuilderflow.co.za/apply/vw-hatfield-johan</code>
+                                    <span class="px-3 py-2 rounded-xl bg-slate-900 text-white text-[10px] font-black uppercase tracking-wider inline-flex items-center gap-1.5 shrink-0"><i class="fa-solid fa-copy"></i> Copy Link</span>
+                                </div>
+                            </div>
+
+                            <!-- Security & Attribution Pill -->
+                            <div class="flex items-start gap-2.5 p-3 rounded-2xl bg-slate-50 border border-slate-200 text-[11px] text-slate-600">
+                                <i class="fa-solid fa-shield-halved text-emerald-600 mt-0.5 text-xs"></i>
+                                <span>Cryptographically locked to store <strong class="text-slate-900 font-mono">#VW-0492</strong> &bull; F&amp;I desk: <strong class="text-slate-900">Johan Botha</strong>. Zero DMS / IT integration required.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 02: Real WhatsApp Screenshot + Real Co-Branded Intake Form -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                <div class="lg:col-span-5 space-y-4">
+                    <span class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">The 10-Second Desk Action &bull; Step 02</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">The Bank Says No. Your F&amp;I Sends One WhatsApp.</h3>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">After a bank decline, your F&amp;I sends your dealership's partner link directly to the buyer. When they tap it, they land on the co-branded Credit Builder Flow intake page anchored to your dealership and F&amp;I desk.</p>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span><strong>Real WhatsApp conversation:</strong> buyer receives decline PDF + CBF partner link, then replies positively</span></li>
+                        <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span><strong>Co-branded intake experience:</strong> preserves dealership attribution and brand equity</span></li>
+                        <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span><strong>POPIA Section 11 digital consent:</strong> captured directly from buyer with zero dealer paperwork</span></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-7">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
+                        <!-- REAL WHATSAPP BUSINESS SCREENSHOT -->
+                        <div class="md:col-span-6 bg-slate-950 p-2 sm:p-2.5 rounded-[2rem] shadow-2xl border-4 border-slate-900">
+                            <div class="px-3 py-2 bg-slate-900 text-white rounded-t-2xl flex items-center justify-between border-b border-slate-800">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
+                                    <span class="text-[11px] font-bold">Real WhatsApp Chat</span>
+                                </div>
+                                <span class="text-[9px] uppercase tracking-wider text-emerald-400 font-mono font-bold">Live Floor Proof</span>
+                            </div>
+                            <div class="rounded-b-2xl overflow-hidden bg-slate-900 flex items-center justify-center">
+                                <img src="whatsapp-referral-proof.jpg" alt="Real WhatsApp Referral Screenshot with Customer Response" class="w-full h-auto object-contain max-h-[520px] rounded-b-xl block mx-auto">
+                            </div>
+                        </div>
+
+                        <!-- REAL INTAKE FORM (Extracted from EligibilityIntakeForm.tsx) -->
+                        <div class="md:col-span-6 bg-white rounded-[2rem] border border-slate-200 shadow-2xl overflow-hidden flex flex-col font-sans">
+                            <!-- Top Minimal Navigation Bar (EligibilityIntakeForm.tsx lines 397-415) -->
+                            <div class="px-3 py-2 border-b border-slate-100 bg-white/90 flex items-center justify-between gap-2">
+                                <img src="https://files.catbox.moe/446hgy.jpg" alt="CBF" class="h-6 w-6 rounded-full object-cover">
+                                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900 text-white text-[9px] font-medium min-w-0">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                                    <span class="truncate">Official Partner Referral: <strong>VW Hatfield</strong> &bull; Referred by Johan Botha</span>
+                                </div>
+                            </div>
+                            <!-- Full-width hero banner (EligibilityIntakeForm.tsx lines 419-425) -->
+                            <div class="w-full bg-[#257ef2] border-b border-blue-600/30">
+                                <img src="cbf_banner.png" alt="Credit Builder Flow - Powered by Volve Media" class="w-full h-auto block max-h-[90px] object-cover object-center">
+                            </div>
+                            <!-- Editorial heading & Diagnostic Story (EligibilityIntakeForm.tsx lines 521-536) -->
+                            <div class="p-3.5 space-y-2.5">
+                                <div class="border-l-4 border-l-blue-600 pl-2.5 py-0.5">
+                                    <p class="text-xs font-black text-slate-900 leading-snug">The Bank Said No? <span class="text-blue-600">Let's Fix What Stopped Your Approval at VW Hatfield.</span></p>
+                                    <p class="text-[10px] text-slate-500 leading-tight mt-0.5">We find the problem and send you back to Johan Botha ready to take delivery.</p>
+                                </div>
+
+                                <!-- Step 1 Assessment Card (EligibilityIntakeForm.tsx lines 582-745) -->
+                                <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/90 space-y-2">
+                                    <div class="flex items-center justify-between text-[10px] font-black uppercase tracking-wider text-blue-700">
+                                        <span>Step 1 of 2 &bull; Quick Assessment</span>
+                                        <span class="font-mono text-slate-400">60 sec</span>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-1.5">
+                                        <div class="h-1 rounded-full bg-slate-900"></div>
+                                        <div class="h-1 rounded-full bg-slate-200"></div>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <p class="text-[10px] font-extrabold text-slate-800">1. Current credit profile?</p>
+                                        <div class="p-2 rounded-xl bg-slate-900 text-white text-[10px] flex items-center justify-between">
+                                            <span>Recent Bank Decline (Last 30 Days)</span>
+                                            <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <p class="text-[10px] font-extrabold text-slate-800">2. Estimated monthly net income?</p>
+                                        <div class="grid grid-cols-4 gap-1 text-[9px] font-mono font-bold text-center">
+                                            <span class="py-1 rounded-lg bg-white border border-slate-200 text-slate-600">R8.5k</span>
+                                            <span class="py-1 rounded-lg bg-white border border-slate-200 text-slate-600">R15k</span>
+                                            <span class="py-1 rounded-lg bg-blue-600 text-white shadow-xs">R25k</span>
+                                            <span class="py-1 rounded-lg bg-white border border-slate-200 text-slate-600">R35k+</span>
+                                        </div>
+                                    </div>
+                                    <!-- POPIA Section 11 Consent Checkbox (EligibilityIntakeForm.tsx lines 849-857) -->
+                                    <div class="flex items-start gap-1.5 p-2 rounded-xl bg-emerald-50 border border-emerald-200">
+                                        <span class="w-3.5 h-3.5 rounded bg-emerald-600 text-white text-[8px] flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-check"></i></span>
+                                        <p class="text-[9px] text-emerald-900 leading-tight">I consent under <strong>POPIA Section 11</strong> to Credit Builder Flow processing my information for my vehicle recovery audit.</p>
+                                    </div>
+                                    <div class="w-full py-2 rounded-xl bg-blue-600 text-white text-[10px] font-black uppercase tracking-wider text-center">Continue to Final Step &rarr;</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 03: Automated Email Alert -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <div class="lg:col-span-5 space-y-4">
+                    <span class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-purple-700 bg-purple-50 border border-purple-200 px-3 py-1 rounded-full">Instant Alert &bull; Step 03</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">An Automated Alert Hits Your F&amp;I's Inbox.</h3>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">The moment the buyer enrols, your desk gets confirmation that the lead is live, consented, and attributed to you. There is nothing to action.</p>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span>Instant automated notification triggered by the CBF backend</span></li>
+                        <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span>Includes POPIA Section 11 digital mandate verification</span></li>
+                        <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span>Zero dealership action required: CBF coaching desk takes over</span></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-7">
+                    <!-- Real Email Template Replica (from functions/index.js lines 1040-1064) -->
+                    <div class="bg-white rounded-3xl border border-slate-200 shadow-2xl shadow-slate-900/10 overflow-hidden font-sans">
+                        <div class="flex items-center gap-3 px-5 py-3 bg-[#0f6cbd] text-white">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span class="text-xs font-bold">Dealership Inbox &bull; johan.botha@vwhatfield.co.za</span>
+                        </div>
+                        <div class="p-5 sm:p-6 space-y-4">
+                            <div class="border-b border-slate-100 pb-3">
+                                <div class="flex items-center gap-2 flex-wrap mb-1">
+                                    <span class="px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200">NEW INTAKE OPT-IN</span>
+                                    <span class="px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200"><i class="fa-solid fa-shield-check mr-1"></i>POPIA Section 11 Consent Verified</span>
+                                </div>
+                                <h4 class="text-base sm:text-lg font-black text-slate-900">New Lead Opt-In: Thabile M. (Ref: CBF-TM8429)</h4>
+                                <p class="text-[11px] text-slate-500 mt-0.5">From: Credit Builder Flow &lt;alerts@creditbuilderflow.co.za&gt; &bull; Today, 14:36</p>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80"><p class="text-[10px] font-black uppercase tracking-wider text-slate-400">Client Name</p><p class="font-extrabold text-slate-900 mt-0.5">Thabile M.</p></div>
+                                <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80"><p class="text-[10px] font-black uppercase tracking-wider text-slate-400">Target Vehicle</p><p class="font-extrabold text-slate-900 mt-0.5">VW T-Cross 1.0 TSI R-Line</p></div>
+                                <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80"><p class="text-[10px] font-black uppercase tracking-wider text-slate-400">Referring Desk</p><p class="font-extrabold text-slate-900 mt-0.5">Johan Botha &bull; VW Hatfield</p></div>
+                                <div class="p-3 rounded-2xl bg-slate-50 border border-slate-200/80"><p class="text-[10px] font-black uppercase tracking-wider text-slate-400">Credit Situation</p><p class="font-extrabold text-slate-900 mt-0.5">Recent Bank Decline</p></div>
+                            </div>
+                            <!-- Coaching Desk Action Callout (functions/index.js lines 1057-1060) -->
+                            <div class="p-3.5 rounded-2xl bg-blue-50/70 border border-blue-200 text-xs text-blue-900">
+                                <p class="text-[10px] font-black uppercase tracking-wider text-blue-700 mb-1">COACHING DESK ACTION IN MOTION</p>
+                                <p class="leading-relaxed">Our underwriting desk is contacting Thabile right now to audit her credit score, verify affordability, and initiate forensic bureau cleanup.</p>
+                            </div>
+                            <!-- Prominent Dealership Action Required: NONE -->
+                            <div class="p-4 rounded-2xl bg-slate-900 text-center">
+                                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400">Dealership Action Required</p>
+                                <p class="text-2xl font-black text-emerald-400 tracking-tight">NONE</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 04: Live Dealership CRM Pipeline (DealerPortal.tsx lines 1823-1936) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <div class="lg:col-span-5 space-y-4">
+                    <span class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">24/7 Visibility &bull; Step 04</span>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">Watch Every Lead Move From Intake to "Sign-Ready."</h3>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">Your live Dealership CRM shows exactly where every referred buyer sits. When blockers are cleared, the lead turns green and your F&amp;I re-submits on Signio and delivers the vehicle.</p>
+                    <ul class="space-y-2 text-sm text-slate-700">
+                        <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span>Exact 4-column Dealership CRM table extracted from the live application</span></li>
+                        <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span>Tracks full lifecycle: Intake &rarr; Dispute &rarr; Seasoning &rarr; Sign-Ready</span></li>
+                        <li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check text-emerald-600 mt-1"></i><span>F&amp;I receives instant return-to-floor notification to re-submit on Signio</span></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-7">
+                    <!-- EXACT CRM TABLE LAYOUT FROM DealerPortal.tsx (lines 1823-1936) -->
+                    <div class="bg-white border border-slate-200/70 rounded-3xl shadow-2xl shadow-slate-900/10 overflow-hidden font-sans">
+                        <div class="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50/60">
+                            <p class="text-xs font-black text-slate-900 uppercase tracking-wider">VW Hatfield &bull; Referred Clients</p>
+                            <span class="text-[10px] font-mono font-bold text-slate-400">4 Active Leads</span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="border-b border-slate-100 bg-slate-50/60 text-[10px] font-black uppercase text-slate-400 tracking-wider">
+                                        <th class="py-3 px-4 sm:px-5 font-extrabold">Client</th>
+                                        <th class="py-3 px-4 sm:px-5 font-extrabold">Stage</th>
+                                        <th class="py-3 px-4 sm:px-5 font-extrabold hidden sm:table-cell">Coach's Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 text-slate-600 text-xs">
+                                    <!-- Row 1: Intake & Bureau Pull -->
+                                    <tr class="hover:bg-slate-50/70 transition-colors">
+                                        <td class="py-3.5 px-4 sm:px-5">
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-8 h-8 rounded-xl bg-slate-100 text-slate-700 font-black text-xs font-mono flex items-center justify-center shrink-0">TM</div>
+                                                <div class="min-w-0">
+                                                    <p class="font-extrabold text-slate-900 text-xs sm:text-sm truncate">Thabile M.</p>
+                                                    <div class="flex items-center gap-1.5 mt-0.5 flex-wrap">
+                                                        <span class="text-[9px] font-mono text-slate-400">CBF-TM8429</span>
+                                                        <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-100 text-[9px] font-bold">
+                                                            <i class="fa-solid fa-car-side text-[8px]"></i> VW T-Cross
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-3.5 px-4 sm:px-5 whitespace-nowrap">
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider border bg-blue-50 text-blue-700 border-blue-200">New Lead</span>
+                                            <span class="text-[10px] font-mono text-slate-400 ml-1.5">1d</span>
+                                        </td>
+                                        <td class="py-3.5 px-4 sm:px-5 text-slate-600 hidden sm:table-cell text-[11px] leading-relaxed max-w-xs">
+                                            Intake completed. Experian bureau report pulled. Diagnostic audit underway for VW T-Cross.
+                                        </td>
+                                    </tr>
+
+                                    <!-- Row 2: SACRRA / Bureau Dispute Filed -->
+                                    <tr class="hover:bg-slate-50/70 transition-colors">
+                                        <td class="py-3.5 px-4 sm:px-5">
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-8 h-8 rounded-xl bg-slate-100 text-slate-700 font-black text-xs font-mono flex items-center justify-center shrink-0">SK</div>
+                                                <div class="min-w-0">
+                                                    <p class="font-extrabold text-slate-900 text-xs sm:text-sm truncate">Sibusiso K.</p>
+                                                    <div class="flex items-center gap-1.5 mt-0.5 flex-wrap">
+                                                        <span class="text-[9px] font-mono text-slate-400">CBF-SK1940</span>
+                                                        <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-100 text-[9px] font-bold">
+                                                            <i class="fa-solid fa-car-side text-[8px]"></i> Ford Ranger XLT
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-3.5 px-4 sm:px-5 whitespace-nowrap">
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider border bg-amber-50 text-amber-700 border-amber-200">Month 1</span>
+                                            <span class="text-[10px] font-mono text-slate-400 ml-1.5">12d</span>
+                                        </td>
+                                        <td class="py-3.5 px-4 sm:px-5 text-slate-600 hidden sm:table-cell text-[11px] leading-relaxed max-w-xs">
+                                            SACRRA dispute lodged with Nedbank/MFC. Prescribed debt challenge active.
+                                        </td>
+                                    </tr>
+
+                                    <!-- Row 3: 90-Day Banking Conduct Seasoning -->
+                                    <tr class="hover:bg-slate-50/70 transition-colors">
+                                        <td class="py-3.5 px-4 sm:px-5">
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-8 h-8 rounded-xl bg-slate-100 text-slate-700 font-black text-xs font-mono flex items-center justify-center shrink-0">PV</div>
+                                                <div class="min-w-0">
+                                                    <p class="font-extrabold text-slate-900 text-xs sm:text-sm truncate">Pieter V.</p>
+                                                    <div class="flex items-center gap-1.5 mt-0.5 flex-wrap">
+                                                        <span class="text-[9px] font-mono text-slate-400">CBF-PV6712</span>
+                                                        <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-100 text-[9px] font-bold">
+                                                            <i class="fa-solid fa-car-side text-[8px]"></i> Toyota Hilux
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-3.5 px-4 sm:px-5 whitespace-nowrap">
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider border bg-cyan-50 text-cyan-700 border-cyan-200">Month 3</span>
+                                            <span class="text-[10px] font-mono text-slate-400 ml-1.5">47d</span>
+                                        </td>
+                                        <td class="py-3.5 px-4 sm:px-5 text-slate-600 hidden sm:table-cell text-[11px] leading-relaxed max-w-xs">
+                                            90-day banking conduct clean. 0 missed debit orders. DTI stabilized to 24%.
+                                        </td>
+                                    </tr>
+
+                                    <!-- Row 4: SIGN-READY / RETURN TO FLOOR (DealerPortal.tsx lines 1846-1849 & 1898-1928) -->
+                                    <tr class="bg-emerald-50/50 hover:bg-emerald-50/80 transition-colors ring-1 ring-inset ring-emerald-300">
+                                        <td class="py-3.5 px-4 sm:px-5">
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-8 h-8 rounded-xl bg-emerald-600 text-white font-black text-xs font-mono flex items-center justify-center shrink-0 shadow-xs">ND</div>
+                                                <div class="min-w-0">
+                                                    <p class="font-extrabold text-slate-900 text-xs sm:text-sm truncate">Nomsa D.</p>
+                                                    <div class="flex items-center gap-1.5 mt-0.5 flex-wrap">
+                                                        <span class="text-[9px] font-mono text-slate-400">CBF-ND3205</span>
+                                                        <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-100 text-[9px] font-bold">
+                                                            <i class="fa-solid fa-car-side text-[8px]"></i> VW Polo Vivo
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-3.5 px-4 sm:px-5 whitespace-nowrap">
+                                            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[9px] font-black uppercase tracking-wider border bg-emerald-500 text-white border-emerald-400 shadow-glow-emerald">
+                                                <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                                                Sign-Ready &bull; Return to Floor
+                                            </span>
+                                        </td>
+                                        <td class="py-3.5 px-4 sm:px-5 text-emerald-950 hidden sm:table-cell text-[11px] font-semibold leading-relaxed max-w-xs">
+                                            <div class="flex items-center justify-between gap-2">
+                                                <span>Blockers cleared. Score re-indexed at 642. Ready for Signio re-submission on your floor.</span>
+                                                <span class="px-2.5 py-1 rounded-xl bg-emerald-600 text-white text-[9px] font-black uppercase tracking-wider inline-flex items-center gap-1 shrink-0 shadow-xs"><i class="fa-brands fa-whatsapp"></i> Client</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="division-of-labor" class="py-14 sm:py-18 px-4 sm:px-6 max-w-6xl mx-auto reveal">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+            <span class="text-xs font-bold uppercase tracking-widest text-emerald-600 block mb-2">Operational Division of Labor</span>
+            <h2 class="font-heading text-2xl sm:text-4xl font-extrabold text-slate-900 leading-tight">Your F&amp;I Only Does 1 Thing.</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 rounded-[2rem] overflow-hidden border border-slate-200 shadow-xl">
+            <div class="bg-white p-8 sm:p-10 space-y-5">
+                <div class="flex items-center justify-between gap-3">
+                    <h3 class="font-heading text-xl font-extrabold text-slate-900">Your F&amp;I Floor</h3>
+                    <span class="px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-black">10 Seconds</span>
+                </div>
+                <ul class="space-y-3.5 text-sm text-slate-700">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-copy text-brand-600 mt-1 w-4"></i><span><strong>Copy &amp; send the link.</strong> That's it.</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-xmark text-slate-400 mt-1 w-4"></i><span>Zero credit counselling</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-xmark text-slate-400 mt-1 w-4"></i><span>Zero documents, data entry or admin</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-xmark text-slate-400 mt-1 w-4"></i><span>Zero follow-up calls</span></li>
+                </ul>
+            </div>
+            <div class="bg-slate-900 text-white p-8 sm:p-10 space-y-5">
+                <div class="flex items-center justify-between gap-3">
+                    <h3 class="font-heading text-xl font-extrabold">Credit Builder Flow</h3>
+                    <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs font-black">100% Off-Site</span>
+                </div>
+                <ul class="space-y-3.5 text-sm text-slate-200">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i><span>Section 11 POPIA digital mandate from the buyer</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i><span>3-Bureau credit pull &amp; diagnostic</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i><span>SACRRA dispute filings</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i><span>90-day bank conduct seasoning</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i><span><strong class="text-white">Exclusive handoff back to your floor</strong></span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 05 — PROOF + TRIAGE HONESTY (Thabile & Not Every Decline)    -->
+    <!-- ============================================================ -->
+    <section id="proof" class="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-18 reveal">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+            <span class="text-xs font-bold uppercase tracking-widest text-emerald-600 block mb-2">Real Showroom Proof</span>
+            <h2 class="font-heading text-2xl sm:text-4xl font-extrabold text-slate-900 leading-tight">This Is Not a Theory.</h2>
+        </div>
+
+        <div class="bg-white rounded-[2.5rem] p-6 sm:p-10 md:p-14 border border-slate-200 shadow-xl flex flex-col md:flex-row items-center gap-10 md:gap-14 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-3 h-full bg-brand-600"></div>
+            <div class="w-full md:w-2/5">
+                <div class="aspect-[4/5] bg-slate-100 rounded-2xl overflow-hidden shadow-inner border border-slate-200 relative">
+                    <img src="https://i.ibb.co/4gNNSqKj/Screenshot-20260118-165501-Facebook-1.jpg" alt="Dealership Customer Delivered" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="w-full md:w-3/5 space-y-6">
+                <div class="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-widest">
+                    <span class="w-2 h-2 bg-emerald-500 rounded-full animate-ping"></span> Automotive Floor Result
+                </div>
+                <h3 class="font-heading text-3xl sm:text-4xl font-black text-slate-900 leading-tight">
+                    Meet Thabile, from <span class="text-rose-600">Declined</span> to <span class="text-emerald-600">Approved</span> in 90 Days.
+                </h3>
+                <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+                    Thabile M. was declined for a VW T-Cross 1.0 TSI R-Line due to prescribed debt listings and debt-to-income utilization. Johan Botha at VW Hatfield spent exactly <strong class="text-slate-900">10 seconds</strong> sending her the dealership's CBF referral link.
+                </p>
+                <div class="pt-2">
+                    <a href="/dealerships/thabile" target="_top" class="btn-animate-pulse inline-flex items-center gap-3 bg-brand-600 hover:bg-brand-500 text-white text-base sm:text-lg font-bold px-8 py-4 rounded-2xl border border-brand-400/40 shadow-xl shadow-brand-600/30 transition-all duration-300 group">
+                        <span>See how</span>
+                        <i class="fa-solid fa-arrow-right text-sm text-brand-100 group-hover:text-white transition-transform duration-200 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Triage Honesty -->
+        <div class="mt-8 bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-sm text-center space-y-4 max-w-4xl mx-auto">
+            <span class="text-xs font-bold uppercase tracking-widest text-amber-600 block">Honest Assessment</span>
+            <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900">Not Every Declined Buyer Is Recoverable.</h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+                We filter referrals immediately: some need quick dispute fixes, others take 60–90 days, and unviable files are filtered out.
+            </p>
+            <div class="pt-2">
+                <a href="/dealerships/case-study" target="_top" class="inline-flex items-center gap-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-md hover:-translate-y-0.5 transition-all">
+                    <span>3 Types of Avatars CBF Deals With</span>
+                    <i class="fa-solid fa-arrow-right text-xs text-brand-400"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 06 — RISK REMOVAL & COMMERCIAL ALIGNMENT                     -->
+    <!-- ============================================================ -->
+    <section id="risk-removal" class="py-14 sm:py-18 px-4 sm:px-6 max-w-6xl mx-auto reveal">
+        <div class="text-center max-w-3xl mx-auto mb-10 space-y-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-purple-600 block">Executive Risk Removal</span>
+            <h2 class="font-heading text-2xl sm:text-4xl font-extrabold text-slate-900 leading-tight">You're Not Paying to Test a Theory.</h2>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">No upfront setup fee. No monthly retainer. CBF's commercial model is tied strictly to a completed vehicle delivery on your showroom floor.</p>
+            <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-300 px-5 py-2.5 rounded-full text-emerald-800 text-xs sm:text-sm font-bold uppercase tracking-wider">
+                <i class="fa-solid fa-check-double text-emerald-600"></i><span>No Recovered Deal &bull; No Fee</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="w-11 h-11 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center text-lg border border-brand-100 shrink-0"><i class="fa-solid fa-user-clock"></i></div>
+                    <div>
+                        <h3 class="font-heading text-base font-bold text-slate-900 mb-1.5">"Will this distract my F&amp;I or add administrative work?"</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">No. Zero admin burden. Your F&amp;I sends one link; CBF handles every document, call and filing off-site.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="w-11 h-11 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg border border-purple-100 shrink-0"><i class="fa-solid fa-fingerprint"></i></div>
+                    <div>
+                        <h3 class="font-heading text-base font-bold text-slate-900 mb-1.5">"What stops you from selling our customer to another dealer?"</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">A contractual and architectural ring-fence. Every lead is locked to your store ID in the CRM until delivery. We fix credit, we never sell cars or share leads.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="w-11 h-11 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg border border-emerald-100 shrink-0"><i class="fa-solid fa-user-shield"></i></div>
+                    <div>
+                        <h3 class="font-heading text-base font-bold text-slate-900 mb-1.5">"Does sending a referral link violate POPIA data laws?"</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">No. Your F&amp;I never shares personal data. The buyer opts in directly and gives their own POPIA Section 11 consent.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="w-11 h-11 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg border border-amber-100 shrink-0"><i class="fa-solid fa-filter"></i></div>
+                    <div>
+                        <h3 class="font-heading text-base font-bold text-slate-900 mb-1.5">"What if the customer is completely unfinanceable?"</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">Our 24-hour Stage 1 triage filters out active judgments and Section 86 debt review before any time is invested.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 07 — BRIDGE CTA: 15-Minute Revenue Salvage Audit             -->
+    <!-- ============================================================ -->
+    <section id="audit" class="py-16 sm:py-24 px-4 sm:px-6 max-w-5xl mx-auto reveal">
+        <div class="bg-slate-900 border border-slate-800 rounded-[2.5rem] p-8 sm:p-14 shadow-2xl space-y-8 text-white">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-400 block">What We Cover in the 15-Minute Strategy Briefing</span>
+                <h2 class="font-heading text-2xl sm:text-4xl font-extrabold text-white leading-tight">You Already Paid to Acquire the Customer.</h2>
+                <p class="text-base sm:text-lg text-slate-300 font-medium">Let's determine whether your dealership has enough recoverable finance fallout for this to matter, wherever you trade in South Africa.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                <div class="p-4 bg-slate-800/80 rounded-2xl border border-slate-700/80 flex items-start gap-3.5">
+                    <div class="w-9 h-9 rounded-xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-sm shrink-0 mt-0.5 border border-brand-500/20"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <div><strong class="text-sm text-white block">Your Fallout Profile</strong><span class="text-xs text-slate-300">What specific decline categories are hitting your F&amp;I desk?</span></div>
+                </div>
+                <div class="p-4 bg-slate-800/80 rounded-2xl border border-slate-700/80 flex items-start gap-3.5">
+                    <div class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-sm shrink-0 mt-0.5 border border-emerald-500/20"><i class="fa-solid fa-calculator"></i></div>
+                    <div><strong class="text-sm text-white block">Your Workable Numbers</strong><span class="text-xs text-slate-300">Which categories are realistically workable under current bank rules?</span></div>
+                </div>
+                <div class="p-4 bg-slate-800/80 rounded-2xl border border-slate-700/80 flex items-start gap-3.5">
+                    <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-sm shrink-0 mt-0.5 border border-purple-500/20"><i class="fa-solid fa-coins"></i></div>
+                    <div><strong class="text-sm text-white block">Your Floor Economics</strong><span class="text-xs text-slate-300">How much gross profit could recovery realistically return to your floor?</span></div>
+                </div>
+                <div class="p-4 bg-slate-800/80 rounded-2xl border border-slate-700/80 flex items-start gap-3.5">
+                    <div class="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-sm shrink-0 mt-0.5 border border-amber-500/20"><i class="fa-solid fa-handshake"></i></div>
+                    <div><strong class="text-sm text-white block">Operational Fit</strong><span class="text-xs text-slate-300">Does CBF make practical sense for your dealership's existing workflow?</span></div>
+                </div>
+            </div>
+
+            <div class="pt-4 flex flex-col items-center justify-center gap-4">
+                <a href="https://calendly.com/volve-media/credit-builder-flow" target="_blank" class="w-full sm:w-auto bg-brand-600 hover:bg-brand-500 text-white font-extrabold text-sm sm:text-base px-9 py-4 rounded-xl shadow-xl shadow-brand-600/40 hover:-translate-y-0.5 transition-all inline-flex items-center justify-center gap-2.5">
+                    <span>Book Your 15-Minute Revenue Salvage Audit</span><i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[11px] text-slate-400">
+                    <span>Credit Builder Flow &bull; Volve Media</span><span>POPIA-Aligned</span><span>NCA-Focused</span><span>Dealerships Nationwide</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- TRUSTED BY DEALERSHIPS (Movable Brand Logos Strip)          -->
+    <!-- ============================================================ -->
+    <section class="py-16 bg-slate-50 overflow-hidden border-t border-slate-200 reveal">
+        <div class="text-center mb-8 px-4">
+            <h2 class="font-heading text-xs font-bold uppercase tracking-widest text-slate-500 mb-1">Trusted By Progressive Dealerships</h2>
+            <p class="text-slate-400 text-xs">Franchised and independent dealership brands nationwide</p>
+        </div>
+        <div class="relative max-w-7xl mx-auto">
+            <div class="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none"></div>
+            
+            <div class="slider-track items-center">
+                <!-- Set 1 -->
+                <div class="w-40 h-20 flex items-center justify-center shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Volkswagen_logo_2019.svg" alt="VW" class="max-h-12 object-contain"></div>
+                <div class="w-40 h-20 flex items-center justify-center shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Ford_logo_flat.svg" alt="Ford" class="max-h-12 object-contain"></div>
+                <div class="w-40 h-20 flex items-center justify-center shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Toyota_carlogo.svg" alt="Toyota" class="max-h-10 object-contain"></div>
+                <div class="w-40 h-20 flex items-center justify-center shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"><img src="https://i.ibb.co/674kDGn3/Dark-Blue-and-White-Illustrative-Auto-Dealership-Logo-Design-1.png" alt="Dealership Logo 1" class="max-h-12 object-contain"></div>
+                <div class="w-40 h-20 flex items-center justify-center shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"><img src="https://i.ibb.co/Q0fLzpp/Black-Background.png" alt="Dealership Logo 2" class="max-h-12 object-contain"></div>
+                <div class="w-40 h-20 flex items-center justify-center shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                    <img src="https://i.ibb.co/wDLPknB/background-removal-TUFIR3px-VFd5-Ml-Ej-MSM2-Y2-Fm-Mjhh-NTNh-Mz-Ri-Yz-Bi-NTFl-MTQ3-ZGQx-Nm-Ey-ZTRm-MCMy-N.png" alt="Royal Cars" border="0" class="max-h-12 object-contain">
+                </div>
+
+                <!-- Set 2 -->
+                <div class="w-40 h-20 flex items-center justify-center shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Volkswagen_logo_2019.svg" alt="VW" class="max-h-12 object-contain"></div>
+                <div class="w-40 h-20 flex items-center justify-center shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Ford_logo_flat.svg" alt="Ford" class="max-h-12 object-contain"></div>
+                <div class="w-40 h-20 flex items-center justify-center shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Toyota_carlogo.svg" alt="Toyota" class="max-h-10 object-contain"></div>
+                <div class="w-40 h-20 flex items-center justify-center shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"><img src="https://i.ibb.co/674kDGn3/Dark-Blue-and-White-Illustrative-Auto-Dealership-Logo-Design-1.png" alt="Dealership Logo 1" class="max-h-12 object-contain"></div>
+                <div class="w-40 h-20 flex items-center justify-center shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"><img src="https://i.ibb.co/Q0fLzpp/Black-Background.png" alt="Dealership Logo 2" class="max-h-12 object-contain"></div>
+                <div class="w-40 h-20 flex items-center justify-center shrink-0 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                    <img src="https://i.ibb.co/wDLPknB/background-removal-TUFIR3px-VFd5-Ml-Ej-MSM2-Y2-Fm-Mjhh-NTNh-Mz-Ri-Yz-Bi-NTFl-MTQ3-ZGQx-Nm-Ey-ZTRm-MCMy-N.png" alt="Royal Cars" border="0" class="max-h-12 object-contain">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ORIGINAL EXACT FOOTER RESTORED                               -->
+    <!-- ============================================================ -->
+    <footer class="bg-slate-950 pt-16 pb-8 px-6 border-t border-slate-900">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+            <div class="col-span-1 lg:col-span-2">
+                <h3 class="font-heading text-xl font-bold text-white mb-6"><span class="border-b-2 border-brand-500 pb-1">Credit Builder Flow</span></h3>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com/CreditBuilderFlow" target="_blank" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-brand-600 hover:text-white transition-colors duration-300"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/creditbuilderflow/" target="_blank" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-brand-600 hover:text-white transition-colors duration-300"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Contact Us</h4>
+                <ul class="space-y-3">
+                    <li><a href="mailto:volve@volvemedia.com" class="text-slate-400 hover:text-brand-400 text-sm transition-colors">volve@volvemedia.com</a></li>
+                    <li><a href="tel:0794762500" class="text-slate-400 hover:text-brand-400 text-sm transition-colors">079 476 2500</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Compliance &amp; Legal</h4>
+                <ul class="space-y-2 text-xs sm:text-sm text-slate-400">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-xs"></i> POPIA Compliant</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-xs"></i> National Credit Act (NCA)</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-xs"></i> Non-Advisory Protocol</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto pt-8 border-t border-slate-900 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-xs text-slate-600">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Credit Builder Flow. A specialized automotive revenue protocol by Volve Media.</p>
+            <p class="mt-2 md:mt-0">Strictly NCA &amp; POPIA Compliant Operation.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll Reveal Observer -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealOptions = { threshold: 0.1, rootMargin: "0px 0px -40px 0px" };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => revealOnScroll.observe(el));
+        });
+    </script>
+</body>
+</html>
